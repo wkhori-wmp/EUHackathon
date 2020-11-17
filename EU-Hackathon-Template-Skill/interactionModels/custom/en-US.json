@@ -1,0 +1,74 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "solar programs",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "SolarProgramsIntent",
+          "slots": [
+            {
+              "name": "state",
+              "type": "AMAZON.US_STATE"
+            }
+          ],
+          "samples": [
+            "solar programs near me",
+            "solar ",
+            "solar programs",
+            "solar programs in {state}"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "SolarProgramsIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1005372980086"
+          },
+          "slots": [
+            {
+              "name": "state",
+              "type": "AMAZON.US_STATE",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent.1005372980086",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "are you sure you want to find solar programs in {state} ?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "6"
+}
