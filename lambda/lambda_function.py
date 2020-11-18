@@ -11,11 +11,13 @@ from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.dispatch_components import AbstractExceptionHandler
 from ask_sdk_core.handler_input import HandlerInput
+from ask_sdk_model.ui import SimpleCard
 
 from ask_sdk_model import Response
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
 
 
 class LaunchRequestHandler(AbstractRequestHandler):
@@ -27,23 +29,24 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Welcome, you can say Hello or Help. Which would you like to try?"
+        speak_output = "Welcome, ask me questions about Solar Energy!"
 
         return (
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
+                # .ask("add a reprompt if you want to keep the session open for the user to respond")
                 .response
         )
 
 
-class HelloWorldIntentHandler(AbstractRequestHandler):
+class SolarProgramsIntentHandler(AbstractRequestHandler):
     # This is a hard-coded example of how an Alexa Skill handles the intent: SolarProgramIntent
     """Handler for Solar Program Intent."""
     def can_handle(self, handler_input):
         # This function is where you define what requests your intent can handle 
         # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("SolarProgramIntent")(handler_input)
+        return ask_utils.is_intent_name("SolarProgramsIntent")(handler_input)
 
     def handle(self, handler_input):
         # This functin is where you define which response Alexa returns to the user
@@ -56,7 +59,7 @@ class HelloWorldIntentHandler(AbstractRequestHandler):
         return (
             handler_input.response_builder
                 .speak(speak_output)
-                # .ask("add a reprompt if you want to keep the session open for the user to respond")
+                .ask(speak_output)
                 .response
         )
 
@@ -164,7 +167,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 sb = SkillBuilder()
 
 sb.add_request_handler(LaunchRequestHandler())
-sb.add_request_handler(HelloWorldIntentHandler())
+sb.add_request_handler(SolarProgramsIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())

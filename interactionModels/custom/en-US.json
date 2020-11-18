@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "solar programs",
+      "invocationName": "test skill",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -36,39 +36,7 @@
         }
       ],
       "types": []
-    },
-    "dialog": {
-      "intents": [
-        {
-          "name": "SolarProgramsIntent",
-          "confirmationRequired": true,
-          "prompts": {
-            "confirmation": "Confirm.Intent.1005372980086"
-          },
-          "slots": [
-            {
-              "name": "state",
-              "type": "AMAZON.US_STATE",
-              "elicitationRequired": false,
-              "confirmationRequired": false,
-              "prompts": {}
-            }
-          ]
-        }
-      ],
-      "delegationStrategy": "ALWAYS"
-    },
-    "prompts": [
-      {
-        "id": "Confirm.Intent.1005372980086",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "are you sure you want to find solar programs in {state} ?"
-          }
-        ]
-      }
-    ]
+    }
   },
-  "version": "6"
+  "version": "7"
 }
