@@ -54,8 +54,7 @@ class SolarProgramsIntentHandler(AbstractRequestHandler):
         
         #TODO:
         
-        speak_output = "There are 64 solar programs available in Illinois. Would you like to hear some more about these programs?"
-
+        speak_output = "There is one solar program available in Illinois. It is the 'Solar Renewable Energy Credit Program'!"
         return (
             handler_input.response_builder
                 .speak(speak_output)
